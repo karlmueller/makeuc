@@ -82,17 +82,17 @@ class Map():
             self.length, self.width = 5, 5
             self.map = [
                 [-2, 1, 1, 1, 1],
-                [0, 1, 0, 0, 1],
-                [1, 1, 1, 0, 0],
-                [1, 0, 0, 0, 1],
-                [1, 0, 1, 1, -1]
+                [0, 0, 0, 0, 1],
+                [1, 1, 0, 1, 1],
+                [1, 0, 0, 0, 0],
+                [1, 1, 1, 1, -1]
             ]
             
 
     def Print(self):
         for i in range(self.width):
             for j in range(self.length):
-                print(self.map[i][j], ' ')
+                print(self.map[i][j], end= ' ')
             print('')
     
     def hospital(self):

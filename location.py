@@ -7,6 +7,9 @@ The higher the score, the more time the ambulance takes to move from the hospita
 import numpy as np
 from stuff import Node, StackFrontier, Map
 
+steps = []
+
+
 def available_move(current_node, city, explored_set, xmax, ymax):
     current_x, current_y = current_node.state
     moves = [
@@ -69,6 +72,7 @@ def solve_best_path(city, xmax, ymax):
                     path.reverse()
                     for state in path:
                         print(state)
+                        steps.append(state)
                     print(score+3)
                     return True
                 else:
@@ -86,7 +90,16 @@ def solve_best_path(city, xmax, ymax):
             stack.add_node(new_node)
 
 if __name__ == '__main__':
-    solve_best_path(city)
+    xmax, ymax = 5, 5
+    city = Map(xmax, ymax)
+    city.Generate_map(random = False)
+    solve_best_path(city, xmax, ymax)
+    
+
+print(f'The hospital is at point {steps[0]} whereas the house is at point {steps[len(steps)-1]}. The ambulance can reach the house in {len(steps)-1} steps!')
+city.Print()
+print('NOTE: -2 represents the hospital location, -1 represents the target house, 0 represents walls, and 1 represents viable streets to drive on.')
+
 
 #xmax, ymax = 5, 5
 #city = Map(xmax, ymax)
